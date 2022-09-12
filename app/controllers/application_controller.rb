@@ -24,7 +24,8 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/player/id' do
-    player = Player.find(
+    player = Player.find(params[:id])
+    player.update(
       name: params[:name],
       age: params[:age],
       position: params[:position],
