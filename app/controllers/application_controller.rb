@@ -13,25 +13,17 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/player' do
-    players = Player.create(
-      name: params[:name],
-      age: params[:age],
-      position: params[:position],
-      team_stadium: params[:team_stadium],
-      team_id: params[:team_id],
-      coach_id: params[:coach_id]
+    new_player = Player.create(
+      player_name: params[:player_name], player_age: params[:player_age], player_position: params[:player_position]
     )
+    new_player.to_json
   end
 
   patch '/player/id' do
     player = Player.find(params[:id])
     player.update(
-      name: params[:name],
-      age: params[:age],
-      position: params[:position],
-      team_stadium: params[:team_stadium],
-      team_id: params[:team_id],
-      coach_id: params[:coach_id]
+      player_name: params[:player_name], player_age: params[:player_age], player_position: params[:player_position]
+      
     )
   end  
 
