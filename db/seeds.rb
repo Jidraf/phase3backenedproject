@@ -2,10 +2,10 @@ puts "🌱 Seeding spices..."
 
 #Seed your database here
 #seed for coaches
-coach1 = Coach.create(coach_name:"Graham Potter")
-coach1 = Coach.create(coach_name:"Pep Guardiola")
-coach1 = Coach.create(coach_name:"Antonio Conte")
-coach1 = Coach.create(coach_name:"Jurgen Kloop")
+coach1 = Coach.create(coach_name:"Graham Potter",coach_team:"Chelsea")
+coach1 = Coach.create(coach_name:"Pep Guardiola",coach_team:"ManCity")
+coach1 = Coach.create(coach_name:"Antonio Conte",coach_team:"Spurs")
+coach1 = Coach.create(coach_name:"Jurgen Kloop",coach_team:"Liverpool")
 
 #seed for players
 player1 = Player.create(name:"Eduord Mendy",age:27,position:"GoalKeeper")

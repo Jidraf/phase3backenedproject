@@ -14,15 +14,13 @@ ActiveRecord::Schema.define(version: 2022_09_08_170252) do
 
   create_table "coaches", force: :cascade do |t|
     t.string "coach_name"
+    t.string "coach_team"
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.string "position"
-    t.string "team_stadium"
-    t.integer "team_id"
-    t.integer "coach_id"
+    t.string "player_name"
+    t.integer "player_age"
+    t.string "player_position"
   end
 
   create_table "teams", force: :cascade do |t|
