@@ -1,89 +1,106 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-    
-  #routes
-  get "/player" do
-    player = Player.all
-    player.to_json
+  
+  # Add your routes here
+  get "/" do
+    { message: "Good luck with your project!" }.to_json
   end
 
-  get '/player/:id' do
-    player = Player.all.find(params[:id])
-    player.to_json
+  get '/players' do
+    players = Player.all
+    players.to_json
   end
 
-  post '/player' do
-    new_player = Player.create(
-      player_name: params[:player_name], player_age: params[:player_age], player_position: params[:player_position]
+  get '/players/:id' do
+    players = Player.find(params[:id])
+    players.to_json
+  end
+
+  post '/players' do
+    players = Player.create(
+      player_name: params[:player_name],  player_age: params[:player_age], player_position: params[:player_position],
+      
     )
     new_player.to_json
   end
 
-  patch '/player/id' do
-    player = Player.find(params[:id])
-    player.update(
-      player_name: params[:player_name], player_age: params[:player_age], player_position: params[:player_position]
+  patch '/players/:id' do
+    update_record =Player.find(
+      player_name: params[:player_name],  player_age: params[:player_age], player_position: params[:player_position],
       
     )
-  end  
+    new_player.to_json
+  end
 
-    delete '/player/id' do
-    delete_player = team.find(params[:name])
+  delete '/players/:id' do
+    delete_player = Player.find(params[:id])
     delete_player.destroy
     delete_player.to_json
   end
 
-
-  get "/coach" do
-    coach = Coach.all
-    coach.to_json
+  get '/teams' do
+    get_team = Team.all.order(:asc)
+    get_team.toTeamn
   end
 
-  get '/coach/:id' do
-    coach = Coach.all.find(params[:id])
-    coach.to_json
+  get '/teams/:id' do
+    get_team = Team.find(params[:id])
+    get_team.toTeamn
   end
 
-  post '/coach' do
-    coach = Coach.create(
-      name: params[:name],
+  post '/teams' do
+    new_team = Team.create(
+      team_name: params[:team_name]
     )
+    new_team.to_json
   end
 
-  patch '/coach' do
-    coach = Coach.find(
-      name: params[:name],
+  patch '/teams/:id' do
+    update_team = Team.find(params[:id])
+    update_team.update(
+      team_name: params[:team_name]
     )
+    update_book.to_json
   end
 
-  delete '/coach/id' do
-    delete_coach = team.find(params[:name])
-    delete_coach.destroy
-    delete_coach.to_json
+  delete '/teams/:id' do
+    team_name = Team.find(params[:id])
+    team_name.destroy
+    team_name.to_json
   end
 
-  get '/team/:id' do
-    team = Team.all.find(params[:id])
-    team.to_json
+
+
+  get '/coaches' do
+    get_coaches = Coaches.all.order(:asc)
+    get_coaches.to_json
   end
 
-  post '/team' do
-    team = Team.create(
-      name: params[:name],
+  get '/coaches/:id' do
+    get_coaches = Coaches.find(params[:id])
+    get_coaches.to_json
+  end
+
+  post '/coaches' do
+    new_coaches = Coaches.create(
+      name: params[:name]
     )
+    new_coaches.to_json
   end
 
-  patch '/team' do
-    team = Team.find(
-      name: params[:name],
+  patch '/coaches/:id' do
+    update_coaches = Coaches.find(params[:id])
+    update_coaches.update(
+      name: params[:name]
     )
+    update_coaches.to_json
   end
 
-  delete '/team/id' do
-    delete_team = team.find(params[:name])
-    delete_team.destroy
-    delete_team.to_json
+  delete '/coaches/:id' do
+    delete_coaches = Coaches.find(params[:id])
+    delete_coaches.destroy
+    delete_coaches.to_json
   end
 
 end
- 
+
